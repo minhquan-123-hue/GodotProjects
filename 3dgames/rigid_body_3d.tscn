@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://ckc3oodo26wnd"]
-
-[node name="RigidBody3D" type="RigidBody3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

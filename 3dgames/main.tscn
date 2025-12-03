@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk446sj3ke4sc"]
+[gd_scene load_steps=7 format=3 uid="uid://dk446sj3ke4sc"]
 
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://db341762uqtjb" path="res://models/chest_gold/chest_gold.glb" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dfv2pbods8j85" path="res://models/barrel/barrel.glb" id="3_sugp2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -16,34 +18,49 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Main" type="Node3D"]
+transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 1, -1, -4.6000004, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.029666256, -0.41926742, 0.90737796, 0, 0.9077775, 0.419452, -0.9995599, 0.012443571, -0.026930358, 0, 26.4, -8.7)
+transform = Transform3D(-0.7012319, 0.8550152, -0.108586185, 0.1287381, 0.25418514, 0.93952894, 0.8294636, 0.55978286, -0.21131122, 0, 26.4, -8.7)
 shadow_enabled = true
 
 [node name="Floor" type="CSGBox3D" parent="."]
-transform = Transform3D(-8.940697e-08, 0.99999994, 0, -0.99999994, -8.940697e-08, 0, 0, 0, 1, 6.3974304, 0.42980543, -0.50999844)
+transform = Transform3D(-8.940697e-08, 0.99999994, 0, -0.99999994, -8.940697e-08, 0, 0, 0, 1, 11.297432, 0.4298048, 4.3399982)
 use_collision = true
-size = Vector3(1.2, 28.1, 33.8)
+size = Vector3(1.2, 87.9, 85.5)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 7.4505806e-08, 1.0000001, 0, -1.0000001, 7.4505806e-08, 6.2499995, 3.8999996, 8.550001)
 size = Vector3(26.1, 1, 5.5)
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D2"]
-transform = Transform3D(4.149999, 3.5527137e-15, -7.1525574e-07, -1.0728835e-06, 1.2367963e-07, -4.564998, -1.2434498e-14, 1.6599997, 3.401187e-07, 7.7499995, 0.15000057, -1.1000001)
+transform = Transform3D(4.1499624, 3.5526931e-15, -7.1525085e-07, -1.0728747e-06, 1.2367963e-07, -4.5649614, -1.2434566e-14, 1.6599997, 3.4011623e-07, 7.7499986, 0.15000057, -1.1000001)
 operation = 2
 radius = 0.2
+sides = 20
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D2"]
+transform = Transform3D(4.1499557, 2.1316136e-14, -7.1524994e-07, -1.0728731e-06, 7.420778e-07, -4.5649548, -1.2434579e-14, 9.959998, 3.4011578e-07, 16.972218, 0.15000057, -1.0170002)
+radius = 0.2
+height = 2.1
 sides = 20
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 7.4505806e-08, 1.0000001, 0, -1.0000001, 7.4505806e-08, 6.4999986, 3.8999996, 15.950001)
 size = Vector3(27.800001, 1, 5.5)
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D6"]
+transform = Transform3D(4.1499333, 3.552677e-15, -7.15247e-07, -1.0728678e-06, 1.2367963e-07, -4.5649323, -1.243462e-14, 1.6599997, 3.4011427e-07, 7.4999995, -0.050001144, -1.5979987)
+operation = 2
+radius = 0.2
+height = 1.4
+sides = 20
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 7.4505806e-08, 1.0000001, 0, -1.0000001, 7.4505806e-08, 6.5500007, 3.8999996, -17.150002)
@@ -95,5 +112,11 @@ sides = 20
 transform = Transform3D(4.15, 0, 0, 0, 4.15, 0, 0, 0, 4.15, 9.700001, 5.5, 4.7000003)
 radius = 0.2
 
-[node name="ProtoController2" parent="." instance=ExtResource("1_ig7tw")]
+[node name="ProtoController2" parent="." instance=ExtResource("1_0wfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 1, -6.9)
+
+[node name="chest_gold2" parent="." instance=ExtResource("3_jyhfs")]
+transform = Transform3D(1.1111112, 0, 0, 0, 1, 0, 0, 0, 1, 8.111112, 1.0000002, -4.1)
+
+[node name="barrel" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(1.1111112, 0, 0, 0, 1, 0, 0, 0, 1, 4.7777777, 1.0000002, -4.2000003)
